@@ -39,11 +39,10 @@ proxy.on('error', (err, req, res) => {
   console.log(err)
   res.end('err: 500')
 })
-
 let params = {
-	port: argmap.port, // Set the server port. Defaults to 8080.
+	port: ~~argmap.port, // Set the server port. Defaults to 8080.
 	host: "0.0.0.0", // Set the address to bind to. Defaults to 0.0.0.0 or process.env.IP.
-	root: path.join(__dirname, argmap.src), // Set root directory that's being served. Defaults to cwd.
+	root: argmap.src, // Set root directory that's being served. Defaults to cwd.
 	open: true, // When false, it won't load your browser by default.
 	ignore: 'bundle,plugin', // comma-separated string for paths to ignore
 	// file: "index.html", // When set, serve this file (server root relative) for every 404 (useful for single-page applications)
