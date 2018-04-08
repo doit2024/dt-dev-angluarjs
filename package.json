@@ -1,15 +1,16 @@
 {
-  "name": "dtzhinengjiaju",
+  "name": "dt-dev-angularjs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "node ./dev/proxy.js -target http://39.108.178.228:8009/"
+  "bin": {
+    "dt-dev-angularjs": "./bin/dt-dev-angularjs.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "http-proxy": "^1.16.2"
+    "http-proxy": "^1.16.2",
+    "live-server": "^1.2.0"
   }
 }
