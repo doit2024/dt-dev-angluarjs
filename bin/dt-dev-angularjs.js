@@ -7,7 +7,7 @@ const httpProxy = require('http-proxy')
 const args = process.argv.slice(2)
 
 /**
- * 设置
+ * 默认设置
  */
 let argmap = {
   port: '3000',
@@ -17,13 +17,20 @@ let argmap = {
 }
 
 /**
- * 命令行参数
+ * 命令行参数形式
  * -port 9000
  * -target http://baidu.com/
  * -mark local
  * -src src
  */
 args.forEach((v, i) => i%2 || (argmap[v.slice(1)] = args[i+1]))
+
+// 配置文件形式
+let src = process.argv[process.argv.length - 1]
+if (src[0] !== '-') {
+  let config = require(__dirname.replace(/((\w\\)+)node_modules.+/, `$1${src}.config.js`))
+  argmap = Object.assign(argmap, config)
+}
 
 const proxy = httpProxy.createProxyServer({
   target: argmap.target,
