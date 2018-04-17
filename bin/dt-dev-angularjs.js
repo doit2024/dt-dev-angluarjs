@@ -28,7 +28,7 @@ args.forEach((v, i) => i%2 || (argmap[v.slice(1)] = args[i+1]))
 // 配置文件形式
 let src = process.argv[process.argv.length - 1]
 if (src[0] !== '-') {
-  let config = require(__dirname.replace(/((\w\\)+)node_modules.+/, `$1${src}.config.js`))
+  let config = require(__dirname.replace(/((\w\\)+)node_modules.+/, `$1project.config.js`))[src]
   argmap = Object.assign(argmap, config)
 }
 
